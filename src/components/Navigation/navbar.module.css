@@ -1,0 +1,28 @@
+.navBarStyle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  height: 60px;
+  background-color: transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  gap: 70px;
+}
+
+.buttonStyle {
+  padding: 10px 20px;
+  background-color: transparent;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.buttonActive {
+  text-decoration: underline;
+  text-underline-offset: 1em;
+  color: white;
+}
