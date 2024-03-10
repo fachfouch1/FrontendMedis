@@ -1,10 +1,12 @@
 .container {
-  display: flex;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   flex-direction: column;
-  top: 0;
   padding: 20px;
-  width: 100%;
-  min-width: 700px;
+  width: 700px;
+  min-width: 400px;
   gap: 20px;
 }
 
@@ -21,7 +23,6 @@
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
-
 }
 
 .search_button {
@@ -32,6 +33,7 @@
   background-color: #4ca2af;
   border-radius: 8px;
   cursor: pointer;
+  border: "1px solid red";
 }
 
 .search_bar {
