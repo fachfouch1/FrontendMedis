@@ -1,13 +1,12 @@
 .container {
   position: absolute;
-  top: 30%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
   flex-direction: column;
   padding: 20px;
   width: 700px;
   min-width: 400px;
-  gap: 20px;
 }
 
 .search_layout {
@@ -29,8 +28,8 @@
   padding: 10px 20px;
   background-color: transparent;
   color: white;
-  border: 1px solid #4ca2af;
-  background-color: #4ca2af;
+  border: 1px solid #646cffaa;
+  background-color: #646cffaa;
   border-radius: 8px;
   cursor: pointer;
   border: "1px solid red";
@@ -62,7 +61,7 @@
 }
 
 .slider_count {
-  color: #4ca2af;
+  color: #646cffaa;
 }
 
 .slider:hover {
@@ -75,7 +74,7 @@
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  background: #4ca2af;
+  background: #646cff;
   cursor: pointer;
 }
 
