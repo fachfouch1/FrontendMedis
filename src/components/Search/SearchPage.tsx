@@ -11,6 +11,14 @@ const SearchPage = () => {
   };
   return (
     <div className={styles.container}>
+      <div style={{marginBottom: "20px"}}>
+        <img
+          src="/medisSearchLogo.png"
+          alt="searchMedis logo"
+          className={styles.logo}
+          width={"350px"}
+        />
+      </div>
       <div className={styles.search_layout}>
         <input
           type="text"
