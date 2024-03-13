@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "./search-page.module.css";
+import { getMolecule } from "./utils";
 
 const SearchPage = () => {
   const [sliderValue, setSliderValue] = useState(1); // Default slider value
@@ -9,6 +10,10 @@ const SearchPage = () => {
     console.log("Search Term:", searchTerm, "| Slider Value:", sliderValue);
     // Implement search functionality or handle the search term as needed
   };
+   const getMoleculeHandler = async() => {
+    console.log ("mamchetch")
+    const result = await getMolecule(8,1,"paracetamol")
+  }
   return (
     <div className={styles.container}>
       <div style={{marginBottom: "20px"}}>
@@ -43,7 +48,7 @@ const SearchPage = () => {
               onChange={(e) => setSliderValue(+e.target.value)}
             />
           </div>
-          <button className={styles.search_button} onClick={handleSearch}>
+          <button className={styles.search_button} onClick={getMoleculeHandler}>
             Search
           </button>
         </div>
