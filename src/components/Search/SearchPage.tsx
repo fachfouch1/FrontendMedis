@@ -6,17 +6,15 @@ const SearchPage = () => {
   const [sliderValue, setSliderValue] = useState(1); // Default slider value
   const [searchTerm, setSearchTerm] = useState("");
 
-  const handleSearch = () => {
-    console.log("Search Term:", searchTerm, "| Slider Value:", sliderValue);
-    // Implement search functionality or handle the search term as needed
+  const getMoleculeHandler = async () => {
+    if (sliderValue && searchTerm.length > 0) {
+      await getMolecule(8, sliderValue, searchTerm);
+    }
   };
-   const getMoleculeHandler = async() => {
-    console.log ("mamchetch")
-    const result = await getMolecule(8,1,"paracetamol")
-  }
+
   return (
     <div className={styles.container}>
-      <div style={{marginBottom: "20px"}}>
+      <div style={{ marginBottom: "20px" }}>
         <img
           src="/medisSearchLogo.png"
           alt="searchMedis logo"
