@@ -25,7 +25,7 @@ export const getSearchedMolecule = (moleculeId: number) => {
   return axios
     .get(url)
     .then((response) => {
-      return response.data;
+      return response;
     })
     .catch((error) => {
       console.error("Error:", error);

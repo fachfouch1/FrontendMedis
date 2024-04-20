@@ -12,7 +12,7 @@ const SearchResult: React.FC<IResult> = ({ molecule_id }) => {
       const getMoleculeInfo = async () => {
         const fetchedMoleculeInfo = await getSearchedMolecule(molecule_id);
         if (fetchedMoleculeInfo?.status === 200) {
-          setMoleculeInfo(fetchedMoleculeInfo);
+          setMoleculeInfo(fetchedMoleculeInfo.data);
         }
         console.log(fetchedMoleculeInfo);
       };
