@@ -48,6 +48,35 @@ export const updateMolecule = (moleculeId: number, molecule: IMolecule) => {
     });
 }
 
+export const getAllMolecules = () => {
+  const url = `${API_URL}/molecules`;
+
+  return axios
+    .get(url)
+    .then((response) => {
+      return response;
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      return error;
+    });
+};
+
+export const deleteMolecule = (moleculeId: number) => {
+  const url = `${API_URL}/delete_molecule/${moleculeId}`;
+
+  return axios
+    .delete(url)
+    .then((response) => {
+
+      return response.data.message !== "Molecule not found";
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      return error;
+    });
+}
+
 export const info : IMolecule = {
   molecule: {
     Date: "Wed, 13 Mar 2024 01:45:02 GMT",

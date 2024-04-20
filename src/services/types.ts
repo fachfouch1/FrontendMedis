@@ -29,3 +29,11 @@ export interface IMolecule {
     Pharmacodynamics_Drug_Interaction_page: string;
   };
 }
+
+export interface IMolecules {
+  User_name: string;
+  date_of_creation: string;
+  id: number;
+  keyword: string;
+  user_id: number;
+}

@@ -11,8 +11,8 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<SearchPage />} />
-        <Route path="/data" element={<ProfilePage />} />
-        <Route path="/profile" element={<DataPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/data" element={<DataPage />} />
       </Routes>
     </>
   );

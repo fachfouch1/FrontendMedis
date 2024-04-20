@@ -16,7 +16,6 @@ const SearchResult: React.FC<IResult> = ({ molecule_id }) => {
       if (fetchedMoleculeInfo?.status === 200) {
         setEditableInfo(fetchedMoleculeInfo.data);
       }
-      console.log(fetchedMoleculeInfo);
     };
 
     if (molecule_id) {
