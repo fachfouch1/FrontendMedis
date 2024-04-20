@@ -32,7 +32,12 @@
   background-color: #646cffaa;
   border-radius: 8px;
   cursor: pointer;
-  border: "1px solid red";
+}
+
+.search_button_disabled {
+  border: 1px solid #7a7ca7aa;
+  background-color: #7a7ca7aa;
+  cursor: not-allowed;
 }
 
 .search_bar {
@@ -41,6 +46,11 @@
   border-radius: 8px;
   border: 1px solid #ccc;
   width: 100%;
+}
+
+.search_bar_disabled {
+  background-color: #7a7ca7aa;
+  cursor: not-allowed;
 }
 
 .slider_container {
@@ -84,4 +94,8 @@
   border-radius: 50%;
   background: #4ca2af;
   cursor: pointer;
+}
+
+.error_message {
+  color: red;
 }

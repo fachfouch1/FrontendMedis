@@ -1,10 +1,6 @@
 import axios from "axios";
 
-export const getMolecule = (
-  userId: number,
-  maxResults: number,
-  keyword: string
-) => {
+export const getMolecule = (userId: number, maxResults: number, keyword: string) => {
   const url = `http://localhost:5000/molecule/${userId}/${maxResults}`;
   const body = {
     keyword: keyword,
@@ -18,6 +14,6 @@ export const getMolecule = (
     })
     .catch((error) => {
       console.error("Error:", error);
-      throw error;
+      return error;
     });
 };
