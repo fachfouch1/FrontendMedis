@@ -60,6 +60,21 @@ export const getAllMolecules = () => {
       console.error("Error:", error);
       return error;
     });
+};
+
+export const deleteMolecule = (moleculeId: number) => {
+  const url = `${API_URL}/delete_molecule/${moleculeId}`;
+
+  return axios
+    .delete(url)
+    .then((response) => {
+
+      return response.data.message !== "Molecule not found";
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      return error;
+    });
 }
 
 export const info : IMolecule = {
