@@ -47,7 +47,7 @@ const DataPage = () => {
           {molecules.map((molecule) => (
             <tr key={molecule.id}>
               <td>{molecule.User_name}</td>
-              <td>{molecule.date_of_Creation}</td>
+              <td>{molecule.date_of_creation}</td>
               <td>{molecule.id}</td>
               <td>{molecule.keyword}</td>
               <td>

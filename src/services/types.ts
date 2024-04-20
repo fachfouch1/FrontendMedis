@@ -32,7 +32,7 @@ export interface IMolecule {
 
 export interface IMolecules {
   User_name: string;
-  date_of_Creation: string;
+  date_of_creation: string;
   id: number;
   keyword: string;
   user_id: number;
