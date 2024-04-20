@@ -5,7 +5,7 @@ interface IResult {
   molecule_id: number;
 }
 
-const Result: React.FC<IResult> = ({ molecule_id }) => {
+const SearchResult: React.FC<IResult> = ({ molecule_id }) => {
   const [moleculeInfo, setMoleculeInfo] = useState<any>(null);
   useEffect(
     () => {
@@ -22,7 +22,7 @@ const Result: React.FC<IResult> = ({ molecule_id }) => {
     [molecule_id]
   );
 
-  return <div>dksfjlghsdjkfghsdfghjkldhjfgljlsdfjgj dksfjlghsdjkfghsdfghjkldhjfgljlsdfjgj qsfsdf sf dksfjlghsdjkfghsdfghjkldhjfgljlsdfjgj qsfsdf sf dksfjlghsdjkfghsdfghjkldhjfgljlsdfjgj qsfsdf sf  sf</div>;
+  return <div>{moleculeInfo}</div>;
 };
 
-export default Result;
+export default SearchResult;

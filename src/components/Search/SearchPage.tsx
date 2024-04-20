@@ -2,7 +2,7 @@ import { useState } from "react";
 import styles from "./search-page.module.css";
 import { getMolecule } from "../../services/utils";
 import clsx from "clsx";
-import Result from "./Resulat";
+import SearchResult from "./SearchResult";
 
 const SearchPage = () => {
   const [sliderValue, setSliderValue] = useState(1);
@@ -65,7 +65,7 @@ const SearchPage = () => {
           </div>
         </div>
       </div>
-      {searchedMolecule && <Result molecule_id={searchedMolecule} />}
+      {searchedMolecule && <SearchResult molecule_id={searchedMolecule} />}
     </div>
   );
 };
