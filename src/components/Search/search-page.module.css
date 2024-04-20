@@ -5,8 +5,17 @@
   transform: translate(-50%, -50%);
   flex-direction: column;
   padding: 20px;
-  width: 700px;
-  min-width: 400px;
+  width: 1000px;
+}
+
+.result_layout {
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  gap: 20px;
+
 }
 
 .search_layout {
