@@ -1,11 +1,13 @@
 import { useState } from "react";
 import styles from "./search-page.module.css";
-import { getMolecule } from "./utils";
+import { getMolecule } from "../../services/utils";
 import clsx from "clsx";
+import Result from "./Resulat";
 
 const SearchPage = () => {
   const [sliderValue, setSliderValue] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
+  const [searchedMolecule, setSearchedMolecule] = useState<any>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -14,7 +16,7 @@ const SearchPage = () => {
     if (sliderValue && searchTerm.length > 0) {
       const response = await getMolecule(8, sliderValue, searchTerm);
       if (response?.molecule_id) {
-        // to do
+        setSearchedMolecule(response.molecule_id);
       } else {
         setError(response.message);
       }
@@ -63,6 +65,7 @@ const SearchPage = () => {
           </div>
         </div>
       </div>
+      {searchedMolecule && <Result molecule_id={searchedMolecule} />}
     </div>
   );
 };
