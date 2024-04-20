@@ -5,8 +5,16 @@
   transform: translate(-50%, -50%);
   flex-direction: column;
   padding: 20px;
-  width: 700px;
-  min-width: 400px;
+  width: 1000px;
+}
+
+.result_layout {
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  gap: 20px;
 }
 
 .search_layout {
@@ -15,6 +23,7 @@
   width: 100%;
   align-items: center;
   gap: 20px;
+  margin-bottom: 50px;
 }
 
 .slider_button_layout {
@@ -98,4 +107,17 @@
 
 .error_message {
   color: red;
+}
+
+.textarea_field {
+  height: auto;
+  min-height: 50px;
+}
+
+.input_field,
+.textarea_field {
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0;
+  box-sizing: border-box;
 }
