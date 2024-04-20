@@ -67,7 +67,7 @@ const SearchPage = () => {
           </div>
         </div>
         <div className={styles.result_layout}>
-          {searchedMolecule && <SearchResult molecule_id={searchedMolecule} />}
+            {searchedMolecule && <SearchResult molecule_id={searchedMolecule} />}
         </div>
       </div>
     </>

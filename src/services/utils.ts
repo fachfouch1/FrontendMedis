@@ -34,6 +34,20 @@ export const getSearchedMolecule = (moleculeId: number) => {
     });
 };
 
+export const updateMolecule = (moleculeId: number, molecule: IMolecule) => {
+  const url = `${API_URL}/modify_molecule/${moleculeId}`;
+
+  return axios
+    .put(url, molecule)
+    .then((response) => {
+      return response;
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      return error;
+    });
+}
+
 export const info : IMolecule = {
   molecule: {
     Date: "Wed, 13 Mar 2024 01:45:02 GMT",

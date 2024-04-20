@@ -15,7 +15,6 @@
   width: 100%;
   align-items: center;
   gap: 20px;
-
 }
 
 .search_layout {
@@ -108,4 +107,17 @@
 
 .error_message {
   color: red;
+}
+
+.textarea_field {
+  height: auto;
+  min-height: 50px;
+}
+
+.input_field,
+.textarea_field {
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0;
+  box-sizing: border-box;
 }
