@@ -33,14 +33,14 @@ const DataPage = () => {
     }
   };
 
-  const handleDownloadPDF = async (id: number) => {
+  const handleDownloadPDF = async (id: number, moleculeName: string) => {
     const response = await downloadPDF(id);
     console.log(response)
      if (response?.status === 200) {
       const url = window.URL.createObjectURL(new Blob([response.data]));
       const link = document.createElement("a");
       link.href = url;
-      link.setAttribute("download", `molecule_${id}.pdf`);
+      link.setAttribute("download", `molecule_${moleculeName}.pdf`);
       document.body.appendChild(link);
       link.click();
     } 
@@ -93,7 +93,7 @@ const DataPage = () => {
               <td>
                 <div style={{ display: "flex", flexDirection: "row", gap: "20px" }}>
                   <div className={styles.edit_icon} onClick={() => handleEdit(molecule.id)} />
-                  <div className={styles.download_icon} onClick={() => handleDownloadPDF(molecule.id)} />
+                  <div className={styles.download_icon} onClick={() => handleDownloadPDF(molecule.id, molecule.keyword)} />
                   <div className={styles.delete_icon} onClick={() => handleDelete(molecule.id)} />
                 </div>
               </td>
