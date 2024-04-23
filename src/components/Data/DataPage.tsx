@@ -96,7 +96,7 @@ const DataPage = () => {
       <input
         className={styles.searchInput}
         type="text"
-        placeholder="Search by Molecule"
+        placeholder="Search by Molecule or User Name"
         onChange={(e) => {
           handleSearch(e.target.value);
         }}
