@@ -1,11 +1,17 @@
 import { useEffect, useState } from "react";
 import styles from "./data-page.module.css";
 import { IMolecules } from "../../services/types";
-import { deleteMolecule, getAllMolecules } from "../../services/utils";
+import { deleteMolecule, downloadPDF, getAllMolecules } from "../../services/utils";
 import SearchResult from "../Search/SearchResult";
 
 const DataPage = () => {
-  const [molecules, setMolecules] = useState<IMolecules[]>([]);
+  const [molecules, setMolecules] = useState<IMolecules[]>([/* {
+    "User_name": "user four",
+    "date_of_creation": "2024-04-20 19:12:43",
+    "id": 54,
+    "keyword": "paracetamol",
+    "user_id": 8
+} */]);
   const [loading, setLoading] = useState<boolean>(true);
   const [singleView, setSingleView] = useState<JSX.Element | null>(null);
 
@@ -26,6 +32,18 @@ const DataPage = () => {
       setMolecules(updatedMolecules);
     }
   };
+
+  const handleDownloadPDF = async (id: number) => {
+    const response = await downloadPDF(id);
+   /*  if (response?.status === 200) {
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", `molecule_${id}.pdf`);
+      document.body.appendChild(link);
+      link.click();
+    } */
+  }
 
   const handleBack = () => {
     setSingleView(null);
@@ -74,6 +92,7 @@ const DataPage = () => {
               <td>
                 <div style={{ display: "flex", flexDirection: "row", gap: "20px" }}>
                   <div className={styles.edit_icon} onClick={() => handleEdit(molecule.id)} />
+                  <div className={styles.download_icon} onClick={() => handleDownloadPDF(molecule.id)} />
                   <div className={styles.delete_icon} onClick={() => handleDelete(molecule.id)} />
                 </div>
               </td>
