@@ -50,12 +50,32 @@ td {
   cursor: pointer;
 }
 
+.download_icon {
+  width: 20px;
+  height: 20px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='17' height='17' viewBox='0 0 17 17' fill='none'%3E%3Cg clip-path='url(%23clip0_14277_5515)'%3E%3Cpath d='M15.0264 11.1567V14.2678C15.0264 14.6804 14.8625 15.0761 14.5708 15.3678C14.279 15.6595 13.8834 15.8234 13.4708 15.8234H2.58192C2.16936 15.8234 1.7737 15.6595 1.48198 15.3678C1.19026 15.0761 1.02637 14.6804 1.02637 14.2678V11.1567' stroke='%23EFEDEF' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M4.13916 7.26758L8.02805 11.1565L11.9169 7.26758' stroke='%23EFEDEF' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M8.02637 11.1566V1.82324' stroke='%23EFEDEF' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_14277_5515'%3E%3Crect width='16' height='16' fill='white' transform='translate(0.0263672 0.823242)'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
+  background-repeat: no-repeat no-repeat;
+  background-position: center center;
+  background-size: cover;
+  cursor: pointer;
+}
+
 .no_data {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    flex-direction: column;
-    padding: 20px;
-    width: 1000px;
-  }
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  flex-direction: column;
+  padding: 20px;
+  width: 1000px;
+}
+
+.searchInput {
+  margin: 20px 0;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-bottom: 2px solid grey;
+  outline: none;
+  width: 100%;
+}

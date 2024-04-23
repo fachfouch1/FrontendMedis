@@ -77,6 +77,20 @@ export const deleteMolecule = (moleculeId: number) => {
     });
 }
 
+export const downloadPDF = (moleculeId: number) => {
+  const url = `${API_URL}/generate_pdf/${moleculeId}`;
+
+  return axios
+    .get(url)
+    .then((response) => {
+      return response;
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      return error;
+    });
+}
+
 export const info : IMolecule = {
   molecule: {
     Date: "Wed, 13 Mar 2024 01:45:02 GMT",
