@@ -5,24 +5,8 @@ import { deleteMolecule, downloadPDF, getAllMolecules } from "../../services/uti
 import SearchResult from "../Search/SearchResult";
 
 const DataPage = () => {
-  const [molecules, setMolecules] = useState<IMolecules[]>([
-/*     {
-      User_name: "user four",
-      date_of_creation: "2024-04-20 19:12:43",
-      id: 54,
-      keyword: "paracetamol",
-      user_id: 8,
-    }, */
-  ]);
-  const [searchableMolecules, setSearchableMolecules] = useState<IMolecules[]>([
-   /*  {
-      User_name: "user four",
-      date_of_creation: "2024-04-20 19:12:43",
-      id: 54,
-      keyword: "paracetamol",
-      user_id: 8,
-    }, */
-  ]);
+  const [molecules, setMolecules] = useState<IMolecules[]>([]);
+  const [searchableMolecules, setSearchableMolecules] = useState<IMolecules[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [singleView, setSingleView] = useState<JSX.Element | null>(null);
 
@@ -75,9 +59,10 @@ const DataPage = () => {
   }, []);
 
   const handleSearch = (searchTerm: string) => {
-    const filteredMolecules = searchableMolecules.filter(molecule =>
-      molecule.keyword.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      molecule.User_name.toLowerCase().includes(searchTerm.toLowerCase())
+    const filteredMolecules = searchableMolecules.filter(
+      (molecule) =>
+        molecule.keyword.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        molecule.User_name.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setMolecules(filteredMolecules);
   };
