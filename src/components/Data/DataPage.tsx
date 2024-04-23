@@ -75,8 +75,9 @@ const DataPage = () => {
   }, []);
 
   const handleSearch = (searchTerm: string) => {
-    const filteredMolecules = searchableMolecules.filter((molecule) =>
-      molecule.keyword.toLowerCase().includes(searchTerm.toLowerCase())
+    const filteredMolecules = searchableMolecules.filter(molecule =>
+      molecule.keyword.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      molecule.User_name.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setMolecules(filteredMolecules);
   };
