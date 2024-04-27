@@ -17,10 +17,10 @@ const Login = () => {
         <img src="/medisSearchLogo.png" alt="searchMedis logo" className={styles.logo} width={"350px"} />
         <h2>Medical department</h2>
         <p>
-          Welcome to our research companion app! This powerful tool is designed to streamline your research journey in
-          the field of medicine. This application specializes in extracting valuable data from various websites,
-          providing a seamless experience for gathering information on molecules crucial to your report. Effortlessly
-          generate comprehensive PDFs for your medical research, allowing you to focus more on analysis and insights.
+          Welcome to our MédiSearch app ! This powerful tool is designed to streamline your research journey in the
+          field of medicine. This application specializes in extracting valuable data from various websites, providing a
+          seamless experience for gathering information on molecules crucial to your report. Effortlessly generate
+          comprehensive PDFs for your medical research, allowing you to focus more on analysis and insights.
         </p>
         <div className={styles.footerText}>Happy researching!</div>
       </div>

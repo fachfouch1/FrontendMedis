@@ -51,6 +51,10 @@
   border: none;
 }
 
+.button:hover {
+  background-color: #1920E6;
+}
+
 .signupText {
   margin-top: 20px;
 }
