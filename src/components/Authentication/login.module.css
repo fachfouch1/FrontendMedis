@@ -1,0 +1,47 @@
+.loginContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.loginLeft,
+.loginRight {
+  padding: 20px;
+  width: 50%;
+}
+
+.loginLeft {
+  background-color: #e6f7ff;
+  color: #005073;
+}
+
+.loginRight {
+  background-color: #005073;
+  color: #ffffff;
+}
+
+.input {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+}
+
+.button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+}
+
+.signupText {
+  margin-top: 20px;
+}
+
+.link {
+  color: #79dae8;
+  text-decoration: none;
+}

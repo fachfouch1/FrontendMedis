@@ -1,6 +1,11 @@
 .tableContainer {
+  position: absolute;
   margin: 80px;
+  top: 20%;
+  left: 45%;
+  transform: translate(-50%, -50%);
   padding: 10px;
+  width: 1200px;
 }
 
 table {
@@ -96,7 +101,7 @@ td {
   transform: translate(-50%, -50%);
   flex-direction: column;
   padding: 20px;
-  width: 1000px;
+  width: 20px;
 }
 
 .searchInput {

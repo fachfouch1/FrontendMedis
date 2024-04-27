@@ -90,7 +90,7 @@ export const downloadPDF = (moleculeId: number) => {
     });
 };
 
-const data = {
+export const data = {
   User_name: "user four",
   date_of_creation: "2024-04-20 19:12:43",
   id: 54,
