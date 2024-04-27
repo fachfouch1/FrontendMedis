@@ -14,7 +14,7 @@ const Login = () => {
   return (
     <div className={styles.loginContainer}>
       <div className={styles.loginLeft}>
-        <div className={styles.logo}>Medis</div>
+        <img src="/medisSearchLogo.png" alt="searchMedis logo" className={styles.logo} width={"350px"} />
         <h2>Medical department</h2>
         <p>
           Welcome to our research companion app! This powerful tool is designed to streamline your research journey in
