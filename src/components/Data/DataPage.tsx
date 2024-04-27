@@ -1,14 +1,25 @@
 import { useEffect, useState } from "react";
 import styles from "./data-page.module.css";
 import { IMolecules } from "../../services/types";
-import { deleteMolecule, downloadPDF, getAllMolecules } from "../../services/utils";
+import { deleteMolecule, downloadPDF, getAllMolecules, getMolecule } from "../../services/utils";
 import SearchResult from "../Search/SearchResult";
+import clsx from "clsx";
 
 const DataPage = () => {
-  const [molecules, setMolecules] = useState<IMolecules[]>([]);
+  const [molecules, setMolecules] = useState<IMolecules[]>([
+/*     {
+      User_name: "user four",
+      date_of_creation: "2024-04-20 19:12:43",
+      id: 54,
+      keyword: "paracetamol",
+      user_id: 8,
+    }, */
+  ]);
   const [searchableMolecules, setSearchableMolecules] = useState<IMolecules[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const [isScraping, setIsScraping] = useState<boolean>(false);
   const [singleView, setSingleView] = useState<JSX.Element | null>(null);
+  const [error, setError] = useState<string>("");
 
   const handleEdit = (id: number) => {
     const singleView = (
@@ -38,6 +49,15 @@ const DataPage = () => {
       document.body.appendChild(link);
       link.click();
     }
+  };
+
+  const handleScraping = async (keyword: string) => {
+    setIsScraping(true);
+    const response = await getMolecule(8, 1, keyword);
+    if (!response?.molecule_id) {
+      setError(response.message);
+    }
+    setIsScraping(false);
   };
 
   const handleBack = () => {
@@ -78,6 +98,7 @@ const DataPage = () => {
 
   return (
     <div className={styles.tableContainer}>
+      <p>{error}</p>
       <input
         className={styles.searchInput}
         type="text"
@@ -107,6 +128,10 @@ const DataPage = () => {
                 <td>{molecule.keyword}</td>
                 <td>
                   <div style={{ display: "flex", flexDirection: "row", gap: "20px" }}>
+                    <div
+                      className={clsx(styles.refresh_icon, isScraping && styles.spinner)}
+                      onClick={() => handleScraping(molecule.keyword)}
+                    />
                     <div className={styles.edit_icon} onClick={() => handleEdit(molecule.id)} />
                     <div
                       className={styles.download_icon}

@@ -46,7 +46,7 @@ export const updateMolecule = (moleculeId: number, molecule: IMolecule) => {
       console.error("Error:", error);
       return error;
     });
-}
+};
 
 export const getAllMolecules = () => {
   const url = `${API_URL}/molecules`;
@@ -68,14 +68,13 @@ export const deleteMolecule = (moleculeId: number) => {
   return axios
     .delete(url)
     .then((response) => {
-
       return response.data.message !== "Molecule not found";
     })
     .catch((error) => {
       console.error("Error:", error);
       return error;
     });
-}
+};
 
 export const downloadPDF = (moleculeId: number) => {
   const url = `${API_URL}/generate_pdf/${moleculeId}`;
@@ -89,9 +88,17 @@ export const downloadPDF = (moleculeId: number) => {
       console.error("Error:", error);
       return error;
     });
-}
+};
 
-export const info : IMolecule = {
+const data = {
+  User_name: "user four",
+  date_of_creation: "2024-04-20 19:12:43",
+  id: 54,
+  keyword: "paracetamol",
+  user_id: 8,
+};
+
+export const info: IMolecule = {
   molecule: {
     Date: "Wed, 13 Mar 2024 01:45:02 GMT",
     keyword: "paracetamol",
