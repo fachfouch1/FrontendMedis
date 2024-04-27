@@ -94,7 +94,7 @@ const DataPage = () => {
 
   return (
     <div className={styles.tableContainer}>
-      <p>{error}</p>
+      <p className={styles.error}>{error}</p>
       <input
         className={styles.searchInput}
         type="text"

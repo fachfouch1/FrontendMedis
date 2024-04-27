@@ -70,9 +70,19 @@ td {
   cursor: pointer;
 }
 
+.error {
+  color: red;
+  font-size: 20px;
+  text-align: center;
+}
+
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .spinner {
