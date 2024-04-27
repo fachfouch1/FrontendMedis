@@ -37,3 +37,14 @@ export interface IMolecules {
   keyword: string;
   user_id: number;
 }
+
+export interface IAccount {
+  email: string;
+  first_name: string;
+  last_name: string;
+  password: string;
+  phone_number: string;
+  username: string;
+  role: string;
+  address: string;
+}

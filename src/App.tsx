@@ -5,16 +5,17 @@ import SearchPage from "./components/Search/SearchPage";
 import ProfilePage from "./components/Profile/Profile";
 import DataPage from "./components/Data/DataPage";
 import Login from "./components/Authentication/Login";
+import Signup from "./components/Authentication/Signup";
 
 function App() {
-  const pathname = window.location.pathname;
-  const isHidden = !pathname.includes("login");
-  console.log("isHidden", isHidden);
+  const pathsToHide = ["login", "signup"];
+  const isShown = pathsToHide.some((path) => location.pathname === path);
   return (
     <>
-      {isHidden && <NavBar />}
+      {isShown && <NavBar />}
       <Routes>
         <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="/" element={<SearchPage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/data" element={<DataPage />} />
