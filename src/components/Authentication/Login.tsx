@@ -44,7 +44,7 @@ const Login = () => {
     console.log(response.data);
   };
 
-    if (loggedInUser === "true") {
+    if (loggedInUser !== "true") {
       navigate("/");
     }
 

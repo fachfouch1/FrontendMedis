@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styles from "./login.module.css";
 import { IAccount } from "../../services/types";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const [account, setAccount] = useState<IAccount>({
@@ -13,6 +14,7 @@ const Signup = () => {
     address: "",
     role: "",
   });
+  const navigate = useNavigate();
   const loggedInUser = localStorage.getItem("isLoggedIn");
 
   const handlePhoneInput = (e: any) => {
@@ -43,7 +45,7 @@ const Signup = () => {
     }
   };
 
-  if (loggedInUser === "true") {
+  if (loggedInUser !== "true") {
     navigate("/");
   }
 
