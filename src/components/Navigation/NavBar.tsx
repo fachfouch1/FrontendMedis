@@ -4,6 +4,8 @@ import styles from "./navbar.module.css";
 const NavBar = () => {
   const handleLogout = () => {
     localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("userData");
+    window.location.href = "/login";
   };
 
   return (

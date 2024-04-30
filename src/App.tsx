@@ -16,12 +16,9 @@ function App() {
   useEffect(() => {
     // Check if user is logged in when component mounts
     const loggedInUser = localStorage.getItem("isLoggedIn");
-    const userData = localStorage.getItem("userData");
-
     if (loggedInUser !== "true") {
       navigate("/login");
     }
-    console.log("User data:", userData);
   }, []);
 
   return (

@@ -7,6 +7,7 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const loggedInUser = localStorage.getItem("isLoggedIn");
 
   const handleLogin = async (event: any) => {
     event.preventDefault();
@@ -17,8 +18,9 @@ const Login = () => {
     }
 
     const response = await authenticateUser(username, password);
+    localStorage.setItem("isLoggedIn", "true");
+    navigate("/");
     if (response.status === 200) {
-      console.log("Login successful", response.data);
       localStorage.setItem("isLoggedIn", "true");
       localStorage.setItem(
         "userData",
@@ -41,6 +43,10 @@ const Login = () => {
     }
     console.log(response.data);
   };
+
+    if (loggedInUser === "true") {
+      navigate("/");
+    }
 
   return (
     <div className={styles.loginContainer}>

@@ -96,12 +96,12 @@ td {
 
 .no_data {
   position: absolute;
-  top: 40%;
-  left: 50%;
+  top: 30%;
+  left: 53%;
   transform: translate(-50%, -50%);
   flex-direction: column;
   padding: 20px;
-  width: 20px;
+  width: 150px;
 }
 
 .searchInput {

@@ -13,6 +13,7 @@ const Signup = () => {
     address: "",
     role: "",
   });
+  const loggedInUser = localStorage.getItem("isLoggedIn");
 
   const handlePhoneInput = (e: any) => {
     const value = e.target.value;
@@ -41,6 +42,10 @@ const Signup = () => {
       alert("Please fill all the fields correctly.");
     }
   };
+
+  if (loggedInUser === "true") {
+    navigate("/");
+  }
 
   return (
     <div className={styles.loginContainer}>
