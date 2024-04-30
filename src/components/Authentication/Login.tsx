@@ -1,13 +1,30 @@
 import { useState } from "react";
 import styles from "./login.module.css";
+import { authenticateUser } from "../../services/utils";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = (event: any) => {
+  const handleLogin = async (event: any) => {
     event.preventDefault();
-    // Handle the login logic here
+
+    if (username === "" || password === "") {
+      alert("Please fill all the fields correctly.");
+      return;
+    }
+
+    const response = await authenticateUser(username, password);
+    if (response.status === 200) {
+      console.log("Login successful", response.data);
+      window.location.href = "/dashboard";
+      // Redirect to the dashboard
+    } else {
+      console.error("Login failed:", response.data);
+      alert("Invalid credentials. Please try again.");
+    }
+    console.log(response.data);
+
     console.log("Login attempt with:", username, password);
   };
 
