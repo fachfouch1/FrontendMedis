@@ -17,8 +17,6 @@ const Login = () => {
     }
 
     const response = await authenticateUser(username, password);
-  //  localStorage.setItem("isLoggedIn", "true");
-    navigate("/");
     if (response.status === 200) {
       localStorage.setItem("isLoggedIn", "true");
       localStorage.setItem(
