@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./login.module.css";
 import { authenticateUser } from "../../services/utils";
 import { useNavigate } from "react-router-dom";
@@ -7,7 +7,6 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const loggedInUser = localStorage.getItem("isLoggedIn");
 
   const handleLogin = async (event: any) => {
     event.preventDefault();
@@ -18,7 +17,7 @@ const Login = () => {
     }
 
     const response = await authenticateUser(username, password);
-    localStorage.setItem("isLoggedIn", "true");
+  //  localStorage.setItem("isLoggedIn", "true");
     navigate("/");
     if (response.status === 200) {
       localStorage.setItem("isLoggedIn", "true");
@@ -44,9 +43,12 @@ const Login = () => {
     console.log(response.data);
   };
 
-    if (loggedInUser !== "true") {
-      navigate("/");
-    }
+    useEffect(() => {
+      const loggedInUser = localStorage.getItem("isLoggedIn");
+      if (loggedInUser === "true") {
+        navigate("/");
+      }
+    }, []);
 
   return (
     <div className={styles.loginContainer}>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./login.module.css";
 import { IAccount } from "../../services/types";
 import { useNavigate } from "react-router-dom";
@@ -15,7 +15,6 @@ const Signup = () => {
     role: "",
   });
   const navigate = useNavigate();
-  const loggedInUser = localStorage.getItem("isLoggedIn");
 
   const handlePhoneInput = (e: any) => {
     const value = e.target.value;
@@ -45,9 +44,12 @@ const Signup = () => {
     }
   };
 
-  if (loggedInUser !== "true") {
-    navigate("/");
-  }
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("isLoggedIn");
+    if (loggedInUser === "true") {
+      navigate("/");
+    }
+  }, []);
 
   return (
     <div className={styles.loginContainer}>
