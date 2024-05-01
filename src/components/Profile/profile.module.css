@@ -1,0 +1,34 @@
+/* ProfilePage.module.css */
+.container {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  flex-direction: column;
+  padding: 20px;
+  width: 1000px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  margin: auto;
+}
+
+.label {
+  margin-top: 10px;
+}
+
+.input {
+  margin-top: 5px;
+  height: 20px;
+}
+
+.button {
+  margin-top: 20px;
+}
+
+.span {
+  margin-top: 10px;
+}

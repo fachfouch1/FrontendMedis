@@ -132,6 +132,23 @@ export const authenticateUser = async (username: string, password: string) => {
     });
 };
 
+export const updateUser = async (account: IAccount) => {
+  const url = `${API_URL}/modify_user/${account.id}`;
+  const body = {
+    ...account,
+  };
+
+  return axios
+    .put(url, body)
+    .then((response) => {
+      return response;
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      return error;
+    });
+};
+
 export const data = {
   User_name: "user four",
   date_of_creation: "2024-04-20 19:12:43",
