@@ -1,5 +1,5 @@
 import axios from "axios";
-import { IMolecule } from "./types";
+import { IAccount, IMolecule } from "./types";
 
 const API_URL = "http://localhost:5000";
 
@@ -81,6 +81,30 @@ export const downloadPDF = async (moleculeId: number) => {
 
   return axios
     .get(url)
+    .then((response) => {
+      return response;
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      return error;
+    });
+};
+
+export const registerUser = async (account: IAccount) => {
+  const url = `${API_URL}/add_user`;
+  const body = {
+    username: account.username,
+    password: account.password,
+    email: account.email,
+    role: account.role,
+    phone_number: account.phone_number,
+    first_name: account.first_name,
+    last_name: account.last_name,
+    address: account.address,
+  };
+
+  return axios
+    .post(url, body)
     .then((response) => {
       return response;
     })

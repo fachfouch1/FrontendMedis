@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import styles from "./login.module.css";
 import { IAccount } from "../../services/types";
 import { useNavigate } from "react-router-dom";
+import { registerUser } from "../../services/utils";
 
 const Signup = () => {
   const [account, setAccount] = useState<IAccount>({
@@ -37,8 +38,8 @@ const Signup = () => {
     event.preventDefault();
     if (validateForm()) {
       console.log("Account:", account);
-      // Proceed with submitting the data
-      // Example API call: axios.post('/api/signup', account);
+      registerUser(account);
+      navigate("/login");
     } else {
       alert("Please fill all the fields correctly.");
     }
