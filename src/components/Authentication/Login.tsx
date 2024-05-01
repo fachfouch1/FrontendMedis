@@ -25,7 +25,7 @@ const Login = () => {
           email: response.data.email,
           id: response.data.id,
           username: response.data.username,
-          role: response.data.role.name,
+          role: response.data.role,
           status: response.data.status,
           phone_number: response.data.phone_number,
           first_name: response.data.first_name,
