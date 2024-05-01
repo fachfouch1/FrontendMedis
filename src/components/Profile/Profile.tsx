@@ -61,7 +61,7 @@ const ProfilePage = () => {
     if (loggedInUser) {
       const userData = JSON.parse(loggedInUser);
       setAccount({
-        id: userData.userId,
+        id: userData.id,
         email: userData.email,
         first_name: userData.first_name,
         last_name: userData.last_name,
