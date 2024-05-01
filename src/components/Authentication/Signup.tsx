@@ -38,9 +38,13 @@ const Signup = () => {
     event.preventDefault();
     if (validateForm()) {
       console.log("Account:", account);
-     const response =  await registerUser(account);
-     console.log(response)
-     // navigate("/login");
+      const response = await registerUser(account);
+      if (response.status === 200) {
+        navigate("/login");
+        alert("Account created successfully");
+      } else {
+        alert("Something went wrong. Please try again.");
+      }
     } else {
       alert("Please fill all the fields correctly.");
     }
