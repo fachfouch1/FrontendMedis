@@ -38,8 +38,9 @@ const Signup = () => {
     event.preventDefault();
     if (validateForm()) {
       console.log("Account:", account);
-      await registerUser(account);
-      navigate("/login");
+     const response =  await registerUser(account);
+     console.log(response)
+     // navigate("/login");
     } else {
       alert("Please fill all the fields correctly.");
     }
