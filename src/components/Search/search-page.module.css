@@ -8,6 +8,11 @@
   width: 1000px;
 }
 
+.logo {
+  display: flex;
+  margin-left: 33%;
+}
+
 .result_layout {
   display: flex;
   position: absolute;

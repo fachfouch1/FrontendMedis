@@ -1,6 +1,11 @@
 .tableContainer {
+  position: absolute;
   margin: 80px;
+  top: 20%;
+  left: 45%;
+  transform: translate(-50%, -50%);
   padding: 10px;
+  width: 1200px;
 }
 
 table {
@@ -70,9 +75,19 @@ td {
   cursor: pointer;
 }
 
+.error {
+  color: red;
+  font-size: 20px;
+  text-align: center;
+}
+
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .spinner {
@@ -81,12 +96,12 @@ td {
 
 .no_data {
   position: absolute;
-  top: 40%;
-  left: 50%;
+  top: 30%;
+  left: 53%;
   transform: translate(-50%, -50%);
   flex-direction: column;
   padding: 20px;
-  width: 1000px;
+  width: 150px;
 }
 
 .searchInput {
