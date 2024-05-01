@@ -34,11 +34,11 @@ const Signup = () => {
     return true;
   };
 
-  const handleSignUp = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSignUp = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (validateForm()) {
       console.log("Account:", account);
-      registerUser(account);
+      await registerUser(account);
       navigate("/login");
     } else {
       alert("Please fill all the fields correctly.");
