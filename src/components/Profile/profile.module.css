@@ -10,21 +10,25 @@
 }
 
 .form {
-    display: flex;
-    flex-direction: column;
-    max-width: 300px;
-    margin: auto;
-  }
-  
-  .label {
-    margin-top: 10px;
-  }
-  
-  .input {
-    margin-top: 5px;
-  }
-  
-  .button {
-    margin-top: 20px;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  margin: auto;
+}
+
+.label {
+  margin-top: 10px;
+}
+
+.input {
+  margin-top: 5px;
+  height: 20px;
+}
+
+.button {
+  margin-top: 20px;
+}
+
+.span {
+  margin-top: 10px;
+}

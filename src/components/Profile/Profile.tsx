@@ -1,17 +1,21 @@
 import { useEffect, useState } from "react";
 import styles from "./profile.module.css"; // Import the CSS module
+import { IAccount } from "../../services/types";
+import { updateUser } from "../../services/utils";
 
 const ProfilePage = () => {
-  const [account, setAccount] = useState({
+  const [account, setAccount] = useState<IAccount>({
+    id: 0,
     email: "",
     first_name: "",
     last_name: "",
     password: "",
     phone_number: "",
     username: "",
-    role: "", // Assuming role is not editable but displayed
+    role: "",
     address: "",
   });
+  const [loading, setLoading] = useState(false);
 
   const handleInputChange = (e: any) => {
     const { name, value } = e.target;
@@ -21,10 +25,35 @@ const ProfilePage = () => {
     }));
   };
 
-  const handleSubmit = (e: any) => {
+  const validateForm = () => {
+    for (let key in account) {
+      if (account[key as keyof IAccount] === "" && key !== "password") {
+        return false;
+      }
+    }
+
+    return true;
+  };
+
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
-    console.log("Updated Account:", account);
-    // Implementation to update the data on server
+    if (validateForm()) {
+      setLoading(true);
+      let accountCopy = { ...account };
+      if(account.password === "") {
+        accountCopy = { ...account, password: undefined };
+        
+      } 
+      const response = await updateUser(accountCopy);
+      if (response.status === 200) {
+        alert("Account updated successfully");
+      } else {
+        alert("Something went wrong. Please try again.");
+      }
+    } else {
+      alert("Please fill all the fields correctly.");
+    }
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -32,6 +61,7 @@ const ProfilePage = () => {
     if (loggedInUser) {
       const userData = JSON.parse(loggedInUser);
       setAccount({
+        id: userData.userId,
         email: userData.email,
         first_name: userData.first_name,
         last_name: userData.last_name,
@@ -103,8 +133,8 @@ const ProfilePage = () => {
           value={account.address}
           onChange={handleInputChange}
         />
-
-        <button className={styles.button} type="submit">
+        <span className={styles.span}>Role: {account.role}</span>
+        <button disabled={loading} className={styles.button} type="submit">
           Update Profile
         </button>
       </form>
