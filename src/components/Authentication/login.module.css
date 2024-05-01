@@ -74,3 +74,9 @@
   color: #79dae8;
   text-decoration: none;
 }
+
+.search_button_disabled {
+  border: 1px solid #7a7ca7aa;
+  background-color: #7a7ca7aa;
+  cursor: not-allowed;
+}

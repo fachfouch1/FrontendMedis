@@ -3,6 +3,7 @@ import styles from "./login.module.css";
 import { IAccount } from "../../services/types";
 import { useNavigate } from "react-router-dom";
 import { registerUser } from "../../services/utils";
+import clsx from "clsx";
 
 const Signup = () => {
   const [account, setAccount] = useState<IAccount>({
@@ -15,6 +16,7 @@ const Signup = () => {
     address: "",
     role: "",
   });
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handlePhoneInput = (e: any) => {
@@ -37,7 +39,7 @@ const Signup = () => {
   const handleSignUp = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (validateForm()) {
-      console.log("Account:", account);
+      setLoading(true);
       const response = await registerUser(account);
       if (response.status === 200) {
         navigate("/login");
@@ -48,6 +50,7 @@ const Signup = () => {
     } else {
       alert("Please fill all the fields correctly.");
     }
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -133,7 +136,11 @@ const Signup = () => {
             <option value="ADMIN">ADMIN</option>
             <option value="MEDICAL_DEPARTMENT">MEDICAL DEPARTMENT</option>
           </select>
-          <button className={styles.button} type="submit">
+          <button
+            disabled={loading}
+            className={clsx(styles.button, loading && styles.search_button_disabled)}
+            type="submit"
+          >
             Create
           </button>
         </form>
