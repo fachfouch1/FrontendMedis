@@ -37,9 +37,9 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/profile" element={<ProfilePage />} />
-        {userData?.status && <Route path="/" element={<SearchPage />} />}
-        {userData?.status && <Route path="/data" element={<DataPage />} />}
-        {userData?.status && <Route path="/users" element={<UsersPage />} />}
+        <Route path="/" element={<SearchPage />} />
+        <Route path="/data" element={<DataPage />} />
+        <Route path="/users" element={<UsersPage />} />
       </Routes>
     </>
   );
