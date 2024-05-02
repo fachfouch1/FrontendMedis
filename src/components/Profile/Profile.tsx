@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import styles from "./profile.module.css"; // Import the CSS module
+import styles from "./profile.module.css";
 import { IAccount } from "../../services/types";
 import { updateUser } from "../../services/utils";
 
@@ -25,13 +25,28 @@ const ProfilePage = () => {
     }));
   };
 
+  const handlePhoneInput = (e: any) => {
+    const value = e.target.value;
+    if (value === "" || /^[0-9\b]+$/.test(value)) {
+      setAccount({ ...account, phone_number: value });
+    }
+  };
+
   const validateForm = () => {
     for (let key in account) {
-      if (account[key as keyof IAccount] === "" && key !== "password") {
-        return false;
+      const value = account[key as keyof IAccount];
+      if (typeof value === "string") {
+        if (value === "" && key !== "password") {
+          return false;
+        }
+        if (key === "email" && value !== "") {
+          if (!value.endsWith("@medis.tn")) {
+            alert("Please use Medis email address.");
+            return false;
+          }
+        }
       }
     }
-
     return true;
   };
 
@@ -40,10 +55,9 @@ const ProfilePage = () => {
     if (validateForm()) {
       setLoading(true);
       let accountCopy = { ...account };
-      if(account.password === "") {
+      if (account.password === "") {
         accountCopy = { ...account, password: undefined };
-        
-      } 
+      }
       const response = await updateUser(accountCopy);
       if (response.status === 200) {
         alert("Account updated successfully");
@@ -113,7 +127,8 @@ const ProfilePage = () => {
           type="text"
           name="phone_number"
           value={account.phone_number}
-          onChange={handleInputChange}
+          onChange={handlePhoneInput}
+          maxLength={8}
         />
 
         <label className={styles.label}>Username:</label>

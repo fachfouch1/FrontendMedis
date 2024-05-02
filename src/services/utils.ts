@@ -149,6 +149,73 @@ export const updateUser = async (account: IAccount) => {
     });
 };
 
+export const deleteUser = async (userId: number) => {
+  const url = `${API_URL}/delete_user/${userId}`;
+
+  return axios
+    .delete(url)
+    .then((response) => {
+      return response.data.message !== "User not found";
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      return error;
+    });
+}
+
+export const getAllUsers = async () => {
+  const url = `${API_URL}/users`;
+
+  return axios
+    .get(url)
+    .then((response) => {
+      return response;
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      return error;
+    });
+}
+// Dummy data for testing
+/* export const usersData: IAccount[] = [
+  {
+    id: 1,
+    first_name: "user one",
+    last_name: "user one",
+    username: "user_one",
+    email: "userone@medis.tn",
+    phone_number: "12345678",
+    password: "password",
+    role: "ADMIN",
+    address: "Tunis",
+    status: true,
+  },
+  {
+    id: 2,
+    first_name: "user two",
+    last_name: "user two",
+    username: "user_two",
+    email: "usertwo@medis.tn",
+    phone_number: "12345678",
+    password: "password",
+    role: "MEDICAL_DEPARTMENT",
+    address: "Tunis",
+    status: true,
+  },
+  {
+    id: 3,
+    first_name: "user three",
+    last_name: "user three",
+    username: "user_three",
+    email: "userthree@medis.tn",
+    phone_number: "12345678",
+    password: "password",
+    role: "MEDICAL_DEPARTMENT",
+    address: "Tunis",
+    status: false,
+  },
+];
+
 export const data = {
   User_name: "user four",
   date_of_creation: "2024-04-20 19:12:43",
@@ -196,3 +263,4 @@ export const info: IMolecule = {
       "Paracetamol is a widely used analgesic and antipyretic agent. It is well tolerated and has a good safety profile. Paracetamol is used to treat many conditions such as headache, muscle aches, arthritis, backache, toothaches, colds, and fevers. It is also used to relieve pain from mild arthritis. Paracetamol is also used to reduce fever. Paracetamol is used to treat many conditions such as headache, muscle aches, arthritis, backache, toothaches, colds, and fevers. It is also used to relieve pain from mild arthritis. Paracetamol is also used to reduce fever.",
   },
 };
+ */

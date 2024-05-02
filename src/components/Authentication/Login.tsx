@@ -38,15 +38,14 @@ const Login = () => {
       console.error("Login failed:", response.data);
       alert("Invalid credentials. Please try again.");
     }
-    console.log(response.data);
   };
 
-    useEffect(() => {
-      const loggedInUser = localStorage.getItem("isLoggedIn");
-      if (loggedInUser === "true") {
-        navigate("/");
-      }
-    }, []);
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("isLoggedIn");
+    if (loggedInUser === "true") {
+      navigate("/");
+    }
+  }, []);
 
   return (
     <div className={styles.loginContainer}>

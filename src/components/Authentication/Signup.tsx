@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "./login.module.css";
-import { IAccount } from "../../services/types";
+import { IAccount, ROLE } from "../../services/types";
 import { useNavigate } from "react-router-dom";
 import { registerUser } from "../../services/utils";
 import clsx from "clsx";
@@ -28,11 +28,19 @@ const Signup = () => {
 
   const validateForm = () => {
     for (let key in account) {
-      if (account[key as keyof IAccount] === "") {
-        return false;
+      const value = account[key as keyof IAccount];
+      if (typeof value === "string") {
+        if (value === "") {
+          return false;
+        }
+        if (key === "email" && value !== "") {
+          if (!value.endsWith("@medis.tn")) {
+            alert("Please use Medis email address.");
+            return false;
+          }
+        }
       }
     }
-
     return true;
   };
 
@@ -132,9 +140,9 @@ const Signup = () => {
             value={account.role}
             onChange={(e) => setAccount({ ...account, role: e.target.value })}
           >
-            <option value="">Select an option</option>
-            <option value="ADMIN">ADMIN</option>
-            <option value="MEDICAL_DEPARTMENT">MEDICAL DEPARTMENT</option>
+            <option value="">Select a role</option>
+            <option value={ROLE.Admin}>ADMIN</option>
+            <option value={ROLE.MedicalDepartment}>MEDICAL DEPARTMENT</option>
           </select>
           <button
             disabled={loading}

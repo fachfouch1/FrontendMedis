@@ -7,6 +7,7 @@ import DataPage from "./components/Data/DataPage";
 import Login from "./components/Authentication/Login";
 import Signup from "./components/Authentication/Signup";
 import { useEffect } from "react";
+import UsersPage from "./components/UsersPage/UsersPage";
 
 function App() {
   const navigate = useNavigate();
@@ -16,6 +17,7 @@ function App() {
   useEffect(() => {
     // Check if user is logged in when component mounts
     const loggedInUser = localStorage.getItem("isLoggedIn");
+
     if (loggedInUser !== "true" && !isShown) {
       navigate("/login");
     }
@@ -27,9 +29,10 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/" element={<SearchPage />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/" element={<SearchPage />} />
         <Route path="/data" element={<DataPage />} />
+        <Route path="/users" element={<UsersPage />} />
       </Routes>
     </>
   );
