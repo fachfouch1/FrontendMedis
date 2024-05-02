@@ -9,7 +9,7 @@ const UsersPage = () => {
     const userStored = localStorage.getItem("userData");
     if (userStored) {
       const userData = JSON.parse(userStored);
-      if(!userData.status && userData.role !== ROLE.Admin) {
+      if(!userData.status || userData.role !== ROLE.Admin) {
         navigate("/profile");
       }
     }
