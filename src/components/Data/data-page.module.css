@@ -1,10 +1,10 @@
 .tableContainer {
   position: absolute;
-  margin: 80px;
-  top: 20%;
+  align-items: center;
+  margin: 0 80px;
   left: 45%;
-  transform: translate(-50%, -50%);
-  padding: 10px;
+  transform: translate(-50%, 0);
+  padding: 0px 10px;
   width: 1200px;
 }
 
@@ -96,9 +96,9 @@ td {
 
 .no_data {
   position: absolute;
-  top: 30%;
+  
   left: 53%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, 0);
   flex-direction: column;
   padding: 20px;
   width: 150px;

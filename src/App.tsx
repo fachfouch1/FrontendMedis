@@ -19,7 +19,7 @@ function App() {
     const loggedInUser = localStorage.getItem("isLoggedIn");
 
     if (loggedInUser !== "true" && !isShown) {
-      navigate("/users");
+      navigate("/login");
     }
   }, []);
 

@@ -2,7 +2,7 @@ import styles from "../Data/data-page.module.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { IAccount, ROLE } from "../../services/types";
-import { getAllUsers, usersData } from "../../services/utils";
+import { getAllUsers, updateUser, usersData } from "../../services/utils";
 
 enum Status {
   Active = "Active",
@@ -11,12 +11,12 @@ enum Status {
 
 const UsersPage = () => {
   const navigate = useNavigate();
-  const [users, setUsers] = useState<IAccount[]>( []/* usersData */);
-  const [searchableUsers, setSearchableUsers] = useState<IAccount[]>([]);
+  const [users, setUsers] = useState<IAccount[]>([]/* usersData */);
+  const [searchableUsers, setSearchableUsers] = useState<IAccount[]>([]/* usersData */);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>("");
 
-    useEffect(() => {
+  useEffect(() => {
     const userStored = localStorage.getItem("userData");
     if (userStored) {
       const userData = JSON.parse(userStored);
@@ -26,7 +26,7 @@ const UsersPage = () => {
     }
   }, []);
 
-  useEffect(() => {
+    useEffect(() => {
     const getMolecules = async () => {
       setLoading(true);
       const response = await getAllUsers();
@@ -41,45 +41,46 @@ const UsersPage = () => {
   }, []);
 
   const handleSearch = (searchTerm: string) => {
-    const filteredMolecules = searchableUsers.filter(
+    const filteredUsers = searchableUsers.filter(
       (user) =>
         user.first_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         user.last_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         user.username.toLowerCase().includes(searchTerm.toLowerCase()) ||
         user.email.toLowerCase().includes(searchTerm.toLowerCase())
     );
-    setSearchableUsers(filteredMolecules);
+    setUsers(filteredUsers);
   };
 
   const handleDelete = (id: number) => {
     const updatedUsers = users.filter((user) => user.id !== id);
     setUsers(updatedUsers);
     setSearchableUsers(updatedUsers);
-  }
+  };
 
-  const handleRoleChange = (id:number, newRole : string ) => {
-    const updatedUsers = users.map(user => {
+  const handleRoleChange = (id: number, newRole: string) => {
+    const updatedUsers = users.map((user) => {
       if (user.id === id) {
+        updateUser({ ...user, role: newRole });
         return { ...user, role: newRole };
       }
       return user;
     });
     setUsers(updatedUsers);
     setSearchableUsers(updatedUsers);
-    // Here you could also send update to backend
   };
 
-  const handleStatusChange = (id:number, ChosenStatus : string ) => {
+  const handleStatusChange = (id: number, ChosenStatus: string) => {
     const newStatus = ChosenStatus === Status.Active;
-    const updatedUsers = users.map(user => {
+    const DBStatus = newStatus ? 1 : 0;
+    const updatedUsers = users.map((user) => {
       if (user.id === id) {
+        updateUser({ ...user, status: DBStatus });
         return { ...user, status: newStatus };
       }
       return user;
     });
     setUsers(updatedUsers);
     setSearchableUsers(updatedUsers);
-    // Here you could also send update to backend
   };
 
     if (loading)
@@ -95,7 +96,7 @@ const UsersPage = () => {
       <input
         className={styles.searchInput}
         type="text"
-        placeholder="Search by Molecule or User Name"
+        placeholder="Search by Name, Username or Email"
         onChange={(e) => {
           handleSearch(e.target.value);
         }}
@@ -124,10 +125,7 @@ const UsersPage = () => {
                 <td>{user.email}</td>
                 <td>{user.address}</td>
                 <td>
-                  <select
-                    value={user.role}
-                    onChange={(e) => handleRoleChange(user.id!, e.target.value)}
-                  >
+                  <select value={user.role} onChange={(e) => handleRoleChange(user.id!, e.target.value)}>
                     <option value={ROLE.Admin}>Admin</option>
                     <option value={ROLE.MedicalDepartment}>Medical Department</option>
                   </select>

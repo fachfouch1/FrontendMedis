@@ -48,7 +48,7 @@ export interface IAccount {
   username: string;
   role: string;
   address: string;
-  status?: boolean;
+  status?: boolean | number;
 }
 
 export enum ROLE {
