@@ -42,8 +42,8 @@
   padding: 10px 20px;
   background-color: transparent;
   color: white;
-  border: 1px solid #646cffaa;
-  background-color: #646cffaa;
+  border: 1px solid #0295d4;
+  background-color: #0295d4;
   border-radius: 8px;
   cursor: pointer;
 }
@@ -85,7 +85,7 @@
 }
 
 .slider_count {
-  color: #646cffaa;
+  color: #0295d4;
 }
 
 .slider:hover {
@@ -98,7 +98,7 @@
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  background: #646cff;
+  background: #0295d4;
   cursor: pointer;
 }
 
