@@ -8,7 +8,7 @@ const UsersPage = () => {
     const userStored = localStorage.getItem("userData");
     if (userStored) {
       const userData = JSON.parse(userStored);
-      if(!userData.status) {
+      if(!userData.status && userData.role !== "Admin") {
         navigate("/profile");
       }
     }
