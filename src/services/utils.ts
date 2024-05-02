@@ -149,6 +149,20 @@ export const updateUser = async (account: IAccount) => {
     });
 };
 
+export const deleteUser = async (userId: number) => {
+  const url = `${API_URL}/delete_user/${userId}`;
+
+  return axios
+    .delete(url)
+    .then((response) => {
+      return response.data.message !== "User not found";
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      return error;
+    });
+}
+
 export const getAllUsers = async () => {
   const url = `${API_URL}/users`;
 

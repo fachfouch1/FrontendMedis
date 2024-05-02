@@ -2,7 +2,7 @@ import styles from "../Data/data-page.module.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { IAccount, ROLE } from "../../services/types";
-import { getAllUsers, updateUser, usersData } from "../../services/utils";
+import { deleteUser, getAllUsers, updateUser, usersData } from "../../services/utils";
 
 enum Status {
   Active = "Active",
@@ -11,8 +11,8 @@ enum Status {
 
 const UsersPage = () => {
   const navigate = useNavigate();
-  const [users, setUsers] = useState<IAccount[]>([]/* usersData */);
-  const [searchableUsers, setSearchableUsers] = useState<IAccount[]>([]/* usersData */);
+  const [users, setUsers] = useState<IAccount[]>([] /* usersData */);
+  const [searchableUsers, setSearchableUsers] = useState<IAccount[]>([] /* usersData */);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>("");
 
@@ -26,7 +26,7 @@ const UsersPage = () => {
     }
   }, []);
 
-    useEffect(() => {
+  useEffect(() => {
     const getMolecules = async () => {
       setLoading(true);
       const response = await getAllUsers();
@@ -51,7 +51,14 @@ const UsersPage = () => {
     setUsers(filteredUsers);
   };
 
-  const handleDelete = (id: number) => {
+  const handleDelete = async (id: number) => {
+    const confirm = window.confirm("Are you sure you want to delete this user?");
+    if (!confirm) return;
+    const response = await deleteUser(id); 
+    if (!response) {
+      setError("An Error occurred while deleting the user. Please try again.");
+      return;
+    }
     const updatedUsers = users.filter((user) => user.id !== id);
     setUsers(updatedUsers);
     setSearchableUsers(updatedUsers);
@@ -83,7 +90,7 @@ const UsersPage = () => {
     setSearchableUsers(updatedUsers);
   };
 
-    if (loading)
+  if (loading)
     return (
       <div className={styles.no_data}>
         <span className="loader" />{" "}

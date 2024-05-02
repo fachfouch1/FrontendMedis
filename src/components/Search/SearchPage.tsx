@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 const SearchPage = () => {
   const navigate = useNavigate();
   const [sliderValue, setSliderValue] = useState(1);
+  const [userId, setUserId] = useState<number>();
   const [searchTerm, setSearchTerm] = useState("");
   const [searchedMolecule, setSearchedMolecule] = useState<any>(null);
   const [loading, setLoading] = useState(false);
@@ -15,8 +16,8 @@ const SearchPage = () => {
 
   const getMoleculeHandler = async () => {
     setLoading(true);
-    if (sliderValue && searchTerm.length > 0) {
-      const response = await getMolecule(8, sliderValue, searchTerm);
+    if (sliderValue && searchTerm.length > 0 && userId !== undefined) {
+      const response = await getMolecule(userId, sliderValue, searchTerm);
       if (response?.molecule_id) {
         setSearchedMolecule(response.molecule_id);
       } else {
@@ -30,6 +31,7 @@ const SearchPage = () => {
     const userStored = localStorage.getItem("userData");
     if (userStored) {
       const userData = JSON.parse(userStored);
+      setUserId(userData.id);
       if(!userData.status) {
         navigate("/profile");
       }
