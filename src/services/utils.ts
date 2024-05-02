@@ -149,6 +149,45 @@ export const updateUser = async (account: IAccount) => {
     });
 };
 
+export const usersData: IAccount[] = [
+  {
+    id: 1,
+    first_name: "user one",
+    last_name: "user one",
+    username: "user_one",
+    email: "userone@medis.tn",
+    phone_number: "12345678",
+    password: "password",
+    role: "ADMIN",
+    address: "Tunis",
+    status: true,
+  },
+  {
+    id: 2,
+    first_name: "user two",
+    last_name: "user two",
+    username: "user_two",
+    email: "usertwo@medis.tn",
+    phone_number: "12345678",
+    password: "password",
+    role: "MEDICAL_DEPARTMENT",
+    address: "Tunis",
+    status: true,
+  },
+  {
+    id: 3,
+    first_name: "user three",
+    last_name: "user three",
+    username: "user_three",
+    email: "userthree@medis.tn",
+    phone_number: "12345678",
+    password: "password",
+    role: "MEDICAL_DEPARTMENT",
+    address: "Tunis",
+    status: false,
+  },
+];
+
 export const data = {
   User_name: "user four",
   date_of_creation: "2024-04-20 19:12:43",

@@ -6,27 +6,20 @@ import ProfilePage from "./components/Profile/Profile";
 import DataPage from "./components/Data/DataPage";
 import Login from "./components/Authentication/Login";
 import Signup from "./components/Authentication/Signup";
-import { useEffect, useState } from "react";
-import { IAccount } from "./services/types";
+import { useEffect } from "react";
 import UsersPage from "./components/UsersPage/UsersPage";
 
 function App() {
   const navigate = useNavigate();
   const pathsToHide = ["/login", "/signup"];
   const isShown = pathsToHide.some((path) => location.pathname === path);
-  const [userData, setUserData] = useState<IAccount>();
 
   useEffect(() => {
     // Check if user is logged in when component mounts
     const loggedInUser = localStorage.getItem("isLoggedIn");
-    const userDataStored = localStorage.getItem("userData");
 
     if (loggedInUser !== "true" && !isShown) {
-      if (userDataStored) {
-        setUserData(JSON.parse(userDataStored));
-      }
-
-      navigate("/login");
+      navigate("/users");
     }
   }, []);
 
