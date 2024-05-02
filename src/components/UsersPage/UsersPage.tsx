@@ -2,7 +2,7 @@ import styles from "../Data/data-page.module.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { IAccount, ROLE } from "../../services/types";
-import { usersData } from "../../services/utils";
+import { getAllUsers, usersData } from "../../services/utils";
 
 enum Status {
   Active = "Active",
@@ -24,6 +24,20 @@ const UsersPage = () => {
         navigate("/profile");
       }
     }
+  }, []);
+
+  useEffect(() => {
+    const getMolecules = async () => {
+      setLoading(true);
+      const response = await getAllUsers();
+      if (response?.status === 200) {
+        setUsers(response.data);
+        setSearchableUsers(response.data);
+      }
+      setLoading(false);
+    };
+
+    getMolecules();
   }, []);
 
   const handleSearch = (searchTerm: string) => {

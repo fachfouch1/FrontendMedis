@@ -149,6 +149,20 @@ export const updateUser = async (account: IAccount) => {
     });
 };
 
+export const getAllUsers = async () => {
+  const url = `${API_URL}/users`;
+
+  return axios
+    .get(url)
+    .then((response) => {
+      return response;
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      return error;
+    });
+}
+
 export const usersData: IAccount[] = [
   {
     id: 1,
