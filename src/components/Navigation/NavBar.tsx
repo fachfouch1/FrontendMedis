@@ -39,7 +39,7 @@ const NavBar = () => {
             </NavLink>
           </>
         )}
-        {account?.role === ROLE.Admin && (
+        {account?.role === ROLE.Admin && account?.status && (
           <NavLink
             to="/users"
             className={({ isActive }) => styles.buttonStyle + " " + (isActive ? styles.buttonActive : "")}
