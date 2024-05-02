@@ -4,12 +4,14 @@ import { IMolecules } from "../../services/types";
 import { deleteMolecule, downloadPDF, getAllMolecules, getMolecule } from "../../services/utils";
 import SearchResult from "../Search/SearchResult";
 import clsx from "clsx";
+import { useNavigate } from "react-router-dom";
 
 interface SpinningStatus {
   [key: number]: boolean;
 }
 
 const DataPage = () => {
+  const navigate = useNavigate();
   const [molecules, setMolecules] = useState<IMolecules[]>([]);
   const [searchableMolecules, setSearchableMolecules] = useState<IMolecules[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -82,6 +84,17 @@ const DataPage = () => {
     );
     setMolecules(filteredMolecules);
   };
+
+
+  useEffect(() => {
+    const userStored = localStorage.getItem("userData");
+    if (userStored) {
+      const userData = JSON.parse(userStored);
+      if(!userData.status) {
+        navigate("/profile");
+      }
+    }
+  }, []);
 
   if (singleView) return singleView;
 

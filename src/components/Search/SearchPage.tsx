@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./search-page.module.css";
 import { getMolecule } from "../../services/utils";
 import clsx from "clsx";
 import SearchResult from "./SearchResult";
+import { useNavigate } from "react-router-dom";
 
 const SearchPage = () => {
+  const navigate = useNavigate();
   const [sliderValue, setSliderValue] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchedMolecule, setSearchedMolecule] = useState<any>(null);
@@ -23,6 +25,16 @@ const SearchPage = () => {
     }
     setLoading(false);
   };
+
+  useEffect(() => {
+    const userStored = localStorage.getItem("userData");
+    if (userStored) {
+      const userData = JSON.parse(userStored);
+      if(!userData.status) {
+        navigate("/profile");
+      }
+    }
+  }, []);
 
   return (
     <>
