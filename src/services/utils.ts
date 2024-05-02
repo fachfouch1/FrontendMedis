@@ -1,9 +1,9 @@
 import axios from "axios";
-import { IMolecule } from "./types";
+import { IAccount, IMolecule } from "./types";
 
 const API_URL = "http://localhost:5000";
 
-export const getMolecule = (userId: number, maxResults: number, keyword: string) => {
+export const getMolecule = async (userId: number, maxResults: number, keyword: string) => {
   const url = `${API_URL}/molecule/${userId}/${maxResults}`;
   const body = {
     keyword: keyword,
@@ -20,7 +20,7 @@ export const getMolecule = (userId: number, maxResults: number, keyword: string)
     });
 };
 
-export const getSearchedMolecule = (moleculeId: number) => {
+export const getSearchedMolecule = async (moleculeId: number) => {
   const url = `${API_URL}/molecule_info/${moleculeId}`;
 
   return axios
@@ -34,7 +34,7 @@ export const getSearchedMolecule = (moleculeId: number) => {
     });
 };
 
-export const updateMolecule = (moleculeId: number, molecule: IMolecule) => {
+export const updateMolecule = async (moleculeId: number, molecule: IMolecule) => {
   const url = `${API_URL}/modify_molecule/${moleculeId}`;
 
   return axios
@@ -46,9 +46,9 @@ export const updateMolecule = (moleculeId: number, molecule: IMolecule) => {
       console.error("Error:", error);
       return error;
     });
-}
+};
 
-export const getAllMolecules = () => {
+export const getAllMolecules = async () => {
   const url = `${API_URL}/molecules`;
 
   return axios
@@ -62,22 +62,21 @@ export const getAllMolecules = () => {
     });
 };
 
-export const deleteMolecule = (moleculeId: number) => {
+export const deleteMolecule = async (moleculeId: number) => {
   const url = `${API_URL}/delete_molecule/${moleculeId}`;
 
   return axios
     .delete(url)
     .then((response) => {
-
       return response.data.message !== "Molecule not found";
     })
     .catch((error) => {
       console.error("Error:", error);
       return error;
     });
-}
+};
 
-export const downloadPDF = (moleculeId: number) => {
+export const downloadPDF = async (moleculeId: number) => {
   const url = `${API_URL}/generate_pdf/${moleculeId}`;
 
   return axios
@@ -89,9 +88,143 @@ export const downloadPDF = (moleculeId: number) => {
       console.error("Error:", error);
       return error;
     });
+};
+
+export const registerUser = async (account: IAccount) => {
+  const url = `${API_URL}/add_user`;
+  const body = {
+    username: account.username,
+    password: account.password,
+    email: account.email,
+    role: account.role,
+    phone_number: account.phone_number,
+    first_name: account.first_name,
+    last_name: account.last_name,
+    address: account.address,
+  };
+
+  return axios
+    .post(url, body)
+    .then((response) => {
+      return response;
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      return error;
+    });
+};
+
+export const authenticateUser = async (username: string, password: string) => {
+  const url = `${API_URL}/login`;
+  const body = {
+    username: username,
+    password: password,
+  };
+
+  return axios
+    .post(url, body)
+    .then((response) => {
+      return response;
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      return error;
+    });
+};
+
+export const updateUser = async (account: IAccount) => {
+  const url = `${API_URL}/modify_user/${account.id}`;
+  const body = {
+    ...account,
+  };
+
+  return axios
+    .put(url, body)
+    .then((response) => {
+      return response;
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      return error;
+    });
+};
+
+export const deleteUser = async (userId: number) => {
+  const url = `${API_URL}/delete_user/${userId}`;
+
+  return axios
+    .delete(url)
+    .then((response) => {
+      return response.data.message !== "User not found";
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      return error;
+    });
 }
 
-export const info : IMolecule = {
+export const getAllUsers = async () => {
+  const url = `${API_URL}/users`;
+
+  return axios
+    .get(url)
+    .then((response) => {
+      return response;
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      return error;
+    });
+}
+// Dummy data for testing
+/* export const usersData: IAccount[] = [
+  {
+    id: 1,
+    first_name: "user one",
+    last_name: "user one",
+    username: "user_one",
+    email: "userone@medis.tn",
+    phone_number: "12345678",
+    password: "password",
+    role: "ADMIN",
+    address: "Tunis",
+    status: true,
+  },
+  {
+    id: 2,
+    first_name: "user two",
+    last_name: "user two",
+    username: "user_two",
+    email: "usertwo@medis.tn",
+    phone_number: "12345678",
+    password: "password",
+    role: "MEDICAL_DEPARTMENT",
+    address: "Tunis",
+    status: true,
+  },
+  {
+    id: 3,
+    first_name: "user three",
+    last_name: "user three",
+    username: "user_three",
+    email: "userthree@medis.tn",
+    phone_number: "12345678",
+    password: "password",
+    role: "MEDICAL_DEPARTMENT",
+    address: "Tunis",
+    status: false,
+  },
+];
+
+export const data = {
+  User_name: "user four",
+  date_of_creation: "2024-04-20 19:12:43",
+  id: 54,
+  keyword: "paracetamol",
+  user_id: 8,
+};
+
+export const info: IMolecule = {
   molecule: {
     Date: "Wed, 13 Mar 2024 01:45:02 GMT",
     keyword: "paracetamol",
@@ -130,3 +263,4 @@ export const info : IMolecule = {
       "Paracetamol is a widely used analgesic and antipyretic agent. It is well tolerated and has a good safety profile. Paracetamol is used to treat many conditions such as headache, muscle aches, arthritis, backache, toothaches, colds, and fevers. It is also used to relieve pain from mild arthritis. Paracetamol is also used to reduce fever. Paracetamol is used to treat many conditions such as headache, muscle aches, arthritis, backache, toothaches, colds, and fevers. It is also used to relieve pain from mild arthritis. Paracetamol is also used to reduce fever.",
   },
 };
+ */

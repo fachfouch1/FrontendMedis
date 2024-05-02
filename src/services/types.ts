@@ -37,3 +37,21 @@ export interface IMolecules {
   keyword: string;
   user_id: number;
 }
+
+export interface IAccount {
+  id?: number;
+  email: string;
+  first_name: string;
+  last_name: string;
+  password: string | undefined;
+  phone_number: string;
+  username: string;
+  role: string;
+  address: string;
+  status?: boolean | number;
+}
+
+export enum ROLE {
+  Admin = "ADMIN",
+  MedicalDepartment = "MEDICAL_DEPARTMENT",
+}

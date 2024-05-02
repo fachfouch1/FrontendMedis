@@ -1,0 +1,82 @@
+.loginContainer {
+  display: flex;
+  height: 100vh;
+}
+
+.loginLeft,
+.loginRight {
+  padding: 20px;
+  width: 50%;
+}
+
+.loginLeft {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  background-color: #ffffff;
+  color: #005073;
+  width: 70%;
+  font-size: 20px;
+}
+
+.loginRight {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 30px;
+  text-align: center;
+  background-color: #0079f0;
+  color: #ffffff;
+}
+
+.input {
+  display: block;
+  background-color: #ffffff;
+  color: black;
+  border: transparent;
+  border-radius: 5px;
+  width: 99%;
+  margin: 10px 0;
+  padding: 10px;
+}
+
+.select {
+  display: block;
+  background-color: #ffffff;
+  color: black;
+  border: transparent;
+  border-radius: 5px;
+  width: 101.6%;
+  margin: 10px 0;
+  padding: 10px;
+}
+
+.button {
+  width: 20%;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #001ca6;
+  color: white;
+  border: none;
+}
+
+.button:hover {
+  background-color: #1920e6;
+}
+
+.signupText {
+  margin-top: 20px;
+}
+
+.link {
+  color: #79dae8;
+  text-decoration: none;
+}
+
+.search_button_disabled {
+  border: 1px solid #7a7ca7aa;
+  background-color: #7a7ca7aa;
+  cursor: not-allowed;
+}
