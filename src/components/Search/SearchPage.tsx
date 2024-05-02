@@ -17,6 +17,7 @@ const SearchPage = () => {
   const getMoleculeHandler = async () => {
     setLoading(true);
     if (sliderValue && searchTerm.length > 0 && userId !== undefined) {
+      console.log(userId, sliderValue, searchTerm)
       const response = await getMolecule(userId, sliderValue, searchTerm);
       if (response?.molecule_id) {
         setSearchedMolecule(response.molecule_id);
