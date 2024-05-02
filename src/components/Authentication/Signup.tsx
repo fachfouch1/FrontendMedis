@@ -140,7 +140,7 @@ const Signup = () => {
             value={account.role}
             onChange={(e) => setAccount({ ...account, role: e.target.value })}
           >
-            <option value="">Select an option</option>
+            <option value="">Select a role</option>
             <option value={ROLE.Admin}>ADMIN</option>
             <option value={ROLE.MedicalDepartment}>MEDICAL DEPARTMENT</option>
           </select>

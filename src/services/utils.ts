@@ -176,8 +176,8 @@ export const getAllUsers = async () => {
       return error;
     });
 }
-
-export const usersData: IAccount[] = [
+// Dummy data for testing
+/* export const usersData: IAccount[] = [
   {
     id: 1,
     first_name: "user one",
@@ -263,3 +263,4 @@ export const info: IMolecule = {
       "Paracetamol is a widely used analgesic and antipyretic agent. It is well tolerated and has a good safety profile. Paracetamol is used to treat many conditions such as headache, muscle aches, arthritis, backache, toothaches, colds, and fevers. It is also used to relieve pain from mild arthritis. Paracetamol is also used to reduce fever. Paracetamol is used to treat many conditions such as headache, muscle aches, arthritis, backache, toothaches, colds, and fevers. It is also used to relieve pain from mild arthritis. Paracetamol is also used to reduce fever.",
   },
 };
+ */

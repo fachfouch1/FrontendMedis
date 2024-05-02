@@ -32,7 +32,7 @@ const SearchPage = () => {
     if (userStored) {
       const userData = JSON.parse(userStored);
       setUserId(userData.id);
-      if(!userData.status) {
+      if (!userData.status) {
         navigate("/profile");
       }
     }

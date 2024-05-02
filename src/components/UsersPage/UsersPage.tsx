@@ -2,7 +2,7 @@ import styles from "../Data/data-page.module.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { IAccount, ROLE } from "../../services/types";
-import { deleteUser, getAllUsers, updateUser, usersData } from "../../services/utils";
+import { deleteUser, getAllUsers, updateUser } from "../../services/utils";
 
 enum Status {
   Active = "Active",
@@ -11,8 +11,8 @@ enum Status {
 
 const UsersPage = () => {
   const navigate = useNavigate();
-  const [users, setUsers] = useState<IAccount[]>([] /* usersData */);
-  const [searchableUsers, setSearchableUsers] = useState<IAccount[]>([] /* usersData */);
+  const [users, setUsers] = useState<IAccount[]>([]);
+  const [searchableUsers, setSearchableUsers] = useState<IAccount[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>("");
 
@@ -54,7 +54,7 @@ const UsersPage = () => {
   const handleDelete = async (id: number) => {
     const confirm = window.confirm("Are you sure you want to delete this user?");
     if (!confirm) return;
-    const response = await deleteUser(id); 
+    const response = await deleteUser(id);
     if (!response) {
       setError("An Error occurred while deleting the user. Please try again.");
       return;
