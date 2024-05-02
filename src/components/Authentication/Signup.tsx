@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "./login.module.css";
-import { IAccount } from "../../services/types";
+import { IAccount, ROLE } from "../../services/types";
 import { useNavigate } from "react-router-dom";
 import { registerUser } from "../../services/utils";
 import clsx from "clsx";
@@ -43,7 +43,6 @@ const Signup = () => {
     }
     return true;
   };
-
 
   const handleSignUp = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -142,8 +141,8 @@ const Signup = () => {
             onChange={(e) => setAccount({ ...account, role: e.target.value })}
           >
             <option value="">Select an option</option>
-            <option value="ADMIN">ADMIN</option>
-            <option value="MEDICAL_DEPARTMENT">MEDICAL DEPARTMENT</option>
+            <option value={ROLE.Admin}>ADMIN</option>
+            <option value={ROLE.MedicalDepartment}>MEDICAL DEPARTMENT</option>
           </select>
           <button
             disabled={loading}

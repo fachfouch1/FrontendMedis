@@ -48,4 +48,10 @@ export interface IAccount {
   username: string;
   role: string;
   address: string;
+  status?: boolean;
+}
+
+export enum ROLE {
+  Admin = "ADMIN",
+  MedicalDepartment = "MEDICAL_DEPARTMENT",
 }
