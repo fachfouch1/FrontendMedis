@@ -28,13 +28,22 @@ const Signup = () => {
 
   const validateForm = () => {
     for (let key in account) {
-      if (account[key as keyof IAccount] === "") {
-        return false;
+      const value = account[key as keyof IAccount];
+      if (typeof value === "string") {
+        if (value === "") {
+          return false;
+        }
+        if (key === "email" && value !== "") {
+          if (!value.endsWith("@medis.tn")) {
+            alert("Please use Medis email address.");
+            return false;
+          }
+        }
       }
     }
-
     return true;
   };
+
 
   const handleSignUp = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
